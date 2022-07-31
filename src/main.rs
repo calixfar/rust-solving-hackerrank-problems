@@ -10,13 +10,13 @@ fn simple_compare_triplets(first_jury_points: [i8; 3], second_jury_points: [i8; 
     let mut step: usize = 0;
 
     loop {
-        if (step == 3) {
+        if step == 3 {
             break;
         }
 
-        if (first_jury_points[step] > second_jury_points[step]) {
+        if first_jury_points[step] > second_jury_points[step] {
             juries_score[0] += 1;
-        } else if (first_jury_points[step] < second_jury_points[step]) {
+        } else if first_jury_points[step] < second_jury_points[step] {
             juries_score[1] += 1;
         }
 
