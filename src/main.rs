@@ -5,7 +5,7 @@ fn main() {
     compare_triplets_inline_solution(first_jury_points, second_jury_points);
 }
 
-fn compare_triplets_inline_solution (first_jury_points: [i8; 3], second_jury_points: [i8; 3]) -> [i8; 2] {
+fn compare_triplets_inline_solution(first_jury_points: [i8; 3], second_jury_points: [i8; 3]) -> [i8; 2] {
     const BREAK_POINT: usize = 3;
     let mut step: usize = 0;
     let mut first_jury_score = 0;
