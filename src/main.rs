@@ -1,11 +1,32 @@
 fn main() {
+    a_very_big_sum();
+}
+
+fn a_very_big_sum() -> usize {
+    let mut nums: Vec<usize> = Vec::new();
+
+    nums.push(1);
+    nums.push(2);
+    nums.push(3);
+    nums.push(4);
+    nums.push(5);
+    nums.push(6);
+
+    let mut sum = 0;
+
+    for num in nums {
+        sum += num
+    }
+
+    println!("The result is: {}", sum);
+
+    sum
+}
+
+fn compare_triplets_inline_solution() -> [i8; 2] {
     let first_jury_points: [i8; 3] = [5, 7, 11];
     let second_jury_points: [i8; 3] = [3, 6, 10];
 
-    compare_triplets_inline_solution(first_jury_points, second_jury_points);
-}
-
-fn compare_triplets_inline_solution(first_jury_points: [i8; 3], second_jury_points: [i8; 3]) -> [i8; 2] {
     const BREAK_POINT: usize = 3;
     let mut step: usize = 0;
     let mut first_jury_score = 0;
