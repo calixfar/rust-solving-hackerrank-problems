@@ -1,5 +1,60 @@
 fn main() {
-    a_very_big_sum();
+    climbing_leader_board();
+}
+
+// Problem: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem?isFullScreen=true
+fn climbing_leader_board() -> Vec<usize> {
+    let ranked = vec![100, 100, 50, 40, 40, 20, 10];
+    let player = vec![5, 25, 50, 120];
+    let mut new_positions = Vec::new();
+
+    for player_item in player {
+        let new_position = get_position(ranked.clone(), player_item);
+        
+        new_positions.push(new_position);
+    }
+    println!("{:?}", new_positions);
+
+
+    new_positions
+}
+
+fn get_position(vector: Vec<usize>, item_to_find: usize) -> usize {
+    let normalized_vector = normalize_vector(vector);
+    let mut index = 0;
+    
+    while index < normalized_vector.len() {
+        if normalized_vector[index] == item_to_find || normalized_vector[index] < item_to_find {
+            return index + 1;
+        } 
+
+        index += 1;
+    }
+
+    normalized_vector.len() + 1
+}
+
+fn is_element_in_array(vector: Vec<usize>, item_to_find: usize) -> bool {
+    for item in vector {
+        if item == item_to_find {
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+fn normalize_vector(vector: Vec<usize>) -> Vec<usize> {
+    let mut normalized_vector = Vec::new();
+
+    for item in vector {
+        if !is_element_in_array(normalized_vector.clone(), item) {
+            normalized_vector.push(item);
+        }
+    }
+
+    normalized_vector
 }
 
 fn a_very_big_sum() -> usize {
