@@ -1,5 +1,56 @@
+use std::io;
+
 fn main() {
-    climbing_leader_board();
+    extra_long_factorials_loop();
+}
+
+// https://www.hackerrank.com/challenges/extra-long-factorials/problem?isFullScreen=true
+fn extra_long_factorials_loop() {
+    extra_long_factorials();
+
+    loop {
+        let mut line = String::new();
+        
+        println!("Do you want to get another factorial? y/n");
+    
+        io::stdin()
+            .read_line(&mut line)
+            .expect("Failed to read line");
+        
+        line = line.trim().to_string();
+
+        if line == "y" {
+            extra_long_factorials();
+        } else {
+            break;
+        }
+    }   
+}
+
+fn extra_long_factorials() {
+    let mut line = String::new();
+
+    println!("Please type the number: ");
+
+    io::stdin()
+        .read_line(&mut line)
+        .expect("Failed to read line");
+
+    let mut number: i128 = line
+        .trim()
+        .parse::<i128>()
+        .expect("Error");
+    
+    let mut value = 1;
+
+    while number > 1 {
+        value *= number;
+        
+        number -= 1;
+    }
+    
+
+    println!("This is the value: {}", value);
 }
 
 // Problem: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem?isFullScreen=true
