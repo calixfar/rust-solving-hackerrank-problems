@@ -1,7 +1,42 @@
-use std::io;
+use std::{io, vec};
 
 fn main() {
-    extra_long_factorials_loop();
+    no_divisible_subset();
+}
+
+// https://www.hackerrank.com/challenges/non-divisible-subset/problem?isFullScreen=true
+fn no_divisible_subset() {
+    let vector: Vec<usize> = vec![1,7,2,4];
+    let multiple: usize = 3;
+    let mut no_divisible_numbers = Vec::new();
+    let mut index: usize = 0;
+    let mut sub_index: usize = 0;
+
+
+    while index < vector.len() {
+        while sub_index < vector.len() {
+            let next_index = sub_index + 1;
+
+            if next_index < vector.len() {
+                let sum = vector[index] + vector[next_index];
+                if sum % multiple != 0 {
+                    if !is_element_in_array(no_divisible_numbers.clone(), vector[index]) {
+                        no_divisible_numbers.push(vector[index]);
+                    }
+
+                    if !is_element_in_array(no_divisible_numbers.clone(), vector[next_index]) {
+                        no_divisible_numbers.push(vector[next_index]);
+                    }
+                }
+            }
+            sub_index += 1;
+        }
+
+        index += 1;
+        sub_index = index;
+    }
+
+    println!("{:?}", no_divisible_numbers);
 }
 
 // https://www.hackerrank.com/challenges/extra-long-factorials/problem?isFullScreen=true
